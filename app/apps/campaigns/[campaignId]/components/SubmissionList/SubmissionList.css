@@ -1,0 +1,26 @@
+.submission-list-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.custom-animated-list {
+  width: 100%;
+}
+
+.submission-item {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(75, 85, 99, 0.2);
+}
+
+.submission-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.6);
+  border-color: rgba(75, 85, 99, 0.7);
+}
+
+.submission-item.selected {
+  background-color: rgba(34, 34, 34, 0.8);
+  border-color: rgba(75, 85, 99, 0.9);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
