@@ -52,8 +52,8 @@
 
 ### Setup
 ```bash
-git clone https://github.com/your-username/writica.git
-cd writica
+git clone https://github.com/lens-write-on/write-on-nextjs
+cd write-on-nextjs
 npm install
 cp env-example .env.local  # Configure your API keys
 npm run dev
