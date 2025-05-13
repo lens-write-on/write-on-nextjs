@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "utils": [
+        "@/lib/utils"
+      ],
+      "ui": [
+        "@/components/ui"
+      ],
+      "lib": [
+        "@/lib"
+      ],
+      "hooks": [
+        "@/hooks"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/**/*.js",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "app/**/*.jsx"
+, "components/FormFieldInput.jsx", "components/FormImageUpload.jsx", "components/FormInputText.jsx", "components/fragments/index.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
