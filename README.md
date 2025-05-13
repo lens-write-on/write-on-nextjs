@@ -1,5 +1,3 @@
-![WriteOn Banner](/public/img/writica-banner.png)
-
 # WriteOn: Write, Contribute, Earn – AI-Powered Content Campaigns
 
 ## Overview
