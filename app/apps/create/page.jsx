@@ -306,7 +306,8 @@ export default function CreateCampaignPage() {
   useEffect(() => {
     if (txReceipt) {
       console.log("Transaction receipt:", txReceipt);
-      const contractAddress = txReceipt.logs[0].address; // new contaract address
+      console.log("trx logs", txReceipt.logs);
+      const contractAddress = txReceipt.logs[2].address; // new contaract address
 
       console.log("Contract address:", contractAddress);
       dispatchTx({ type: "SET_CONTRACT_ADDRESS", payload: contractAddress });
