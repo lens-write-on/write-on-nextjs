@@ -22,8 +22,14 @@ import { CustomConnectButton } from "@/components/wallet/CustomConnectButton";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/use-user";
 import { useLens } from "@/hooks/use-lens";
-import { canCreateUsername, createUsername } from "@lens-protocol/client/actions";
+import {
+  canCreateUsername,
+  createAccountWithUsername,
+} from "@lens-protocol/client/actions";
 import { evmAddress } from "@lens-protocol/client";
+import { handleOperationWith } from "@lens-protocol/client/viem";
+import { account } from "@lens-protocol/metadata";
+import storageClient from "@/lib/storage-client";
 
 const formSchema = z.object({
   username: z
@@ -50,13 +56,29 @@ const checkCanCreateUsername = async (username, sessionClient) => {
   return true;
 };
 
-const lensCreateUsername = async (username, sessionClient) => {
-  const result = await createUsername(sessionClient, {
-    username: {
-      localName: "wagmi",
-    namespace: evmAddress(process.env.NEXT_PUBLIC_NAMESPACE_ADDRESS),
-    },
+const lensCreateUsername = async (username, bio, sessionClient, WC) => {
+  const metadata = account({
+    name: username,
+    bio: bio
   });
+
+  // const { uri: lensUri } = await storageClient.uploadFile(
+  //   new File([JSON.stringify(metadata)], "metadata.json", {
+  //     type: "application/json",
+  //   }),
+  //   { acl: immutable(chains.testnet.id) }
+  // );
+
+  const result = await createAccountWithUsername(sessionClient, {
+    username: {
+      localName: username,
+      namespace: evmAddress(process.env.NEXT_PUBLIC_NAMESPACE_ADDRESS),
+    },
+  })
+    .andThen(handleOperationWith(WC))
+    .andThen(sessionClient.waitForTransaction);
+
+  console.log(`lenscreaeteusername`, result);
   return result;
 };
 
@@ -72,7 +94,7 @@ export default function RegisterPage() {
     signMessage,
   } = useSignMessage();
   const router = useRouter();
-  const { sessionClient } = useLens();
+  const { sessionClient, WalletClient } = useLens();
   // Import the user context to update user state after registration
   const { setUserExists } = useUser();
 
@@ -172,8 +194,12 @@ export default function RegisterPage() {
       // create lens username
       const createUsernameResult = await lensCreateUsername(
         values.username,
-        sessionClient
+        values.bio,
+        sessionClient,
+        WalletClient
       );
+
+      console.log(createUsernameResult);
 
       const data = await response.json();
 
