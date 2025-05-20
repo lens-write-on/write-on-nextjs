@@ -1,3 +1,4 @@
+![WriteOn](https://github.com/user-attachments/assets/48e8d273-bbe2-4f7d-a168-f284ec6036e4)
 # WriteOn: Write, Contribute, Earn – AI-Powered Content Campaigns
 
 ## Overview
@@ -81,7 +82,10 @@ npm run dev
 - **For the Ecosystem**: Demand-driven rewards, cross-platform growth, and AI-powered moderation.
 
 ---
-
+## 📚 Additional Resources
+- **Demo Video:** [WriteOn Demo Video](https://youtu.be/oWiTPByKY1c)
+- **Pitch Deck:** [WriteOn Pitch Deck](https://drive.google.com/file/d/1IzwvO1SG5mXtJJtPHKSeAECIqfp6KHBO/view?usp=drive_link)
+---
 ## 📄 License
 MIT License – see [LICENSE](LICENSE) for full details.
 
