@@ -1,5 +1,5 @@
 'use client';
-import { PublicClient, testnet } from "@lens-protocol/client";
+import { PublicClient, mainnet } from "@lens-protocol/client";
 import {fragments} from "./index.js";
 import {createWalletClient, custom } from "viem";
 import { chains } from "@lens-chain/sdk/viem";
@@ -15,7 +15,7 @@ export const LENS_CLIENT = (() => {
     console.log("Creating new Lens client instance");
     try {
       lensClient = PublicClient.create({
-        environment: testnet,
+        environment: mainnet,
         fragments: fragments || [], // Ensure fragments is defined or use empty array,
         storage
       });
@@ -23,7 +23,7 @@ export const LENS_CLIENT = (() => {
       console.error("Error creating Lens client:", error);
       // Create client without custom fragments as fallback
       lensClient = PublicClient.create({
-        environment: testnet,
+        environment: mainnet,
         storage
       });
     }
@@ -37,14 +37,14 @@ export const WALLET_CLIENT = ((address) => {
     try {
       wwalletClient = createWalletClient({
         account: address,
-        chain: chains.testnet,
+        chain: chains.mainnet,
         transport: custom(window?.ethereum)
       });
     } catch (error) {
       console.error("Error creating Lens client:", error);
       // Create client without custom fragments as fallback
       wwalletClient = PublicClient.create({
-        environment: testnet
+        environment: mainnet
       });
     }
   }
