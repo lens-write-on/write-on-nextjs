@@ -307,7 +307,8 @@ export default function CreateCampaignPage() {
     if (txReceipt) {
       console.log("Transaction receipt:", txReceipt);
       console.log("trx logs", txReceipt.logs);
-      const contractAddress = txReceipt.logs[2].address; // new contaract address
+      // const contractAddress = txReceipt.logs[2].address; // new contaract address
+      const contractAddress = txReceipt.logs.find(i => i.address.indexOf("0x000000000000000000") !== 0)?.address;
 
       console.log("Contract address:", contractAddress);
       dispatchTx({ type: "SET_CONTRACT_ADDRESS", payload: contractAddress });
